@@ -1,11 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="index.js" defer></script>
+  </head>
+  <body>
+    <dialog id="menu-entry" open>
+      <form onsubmit="return false">
+        <select form="" name="main-category" id="main-category"></select>
+        <input type="text" name="get-main-category" id="get-main-category" />
+        <select form="" name="sub-category" id="sub-category"></select>
+        <input type="text" name="get-sub-category" id="get-sub-category" />
+        <select form="" name="item-category" id="item-category"></select>
+        <input type="text" name="get-item-category" id="get-item-category" />
+        <button>Close</button>
+      </form>
+    </dialog>
+  </body>
 </html>

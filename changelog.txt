@@ -1,3 +1,4 @@
 28/12/2023
 ddmenu - 4 pomodoro
-rev 1: 2 pomodoro - + 4 pomodoro (entry form addition)
+rev 1: 2 pomodoro - +4 pomodoro (entry form addition)
+rev 2: 8 pomodoro - +8 pomodoro (neck pain)

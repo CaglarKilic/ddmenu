@@ -1,4 +1,12 @@
-const items = {};
+if (!localStorage.length) {
+  localStorage.setItem("items", JSON.stringify({}));
+}
+
+const items = JSON.parse(localStorage.getItem("items"));
+
+function updateLocalStorage() {
+  localStorage.setItem("items", JSON.stringify(items));
+}
 
 function selectCategoryTree() {
   const main = document.querySelector("#main-category");
@@ -45,6 +53,7 @@ function addMainCategory(event) {
     addSelect(select, Object.keys(items));
     select.selectedIndex = select.options.length - 1;
     selectCategoryTree();
+    updateLocalStorage();
   }
 }
 
@@ -56,6 +65,7 @@ function addSubCategory(event) {
     addSelect(select, Object.keys(items[category]));
     select.selectedIndex = select.options.length - 1;
     selectCategoryTree();
+    updateLocalStorage();
   }
 }
 
@@ -68,6 +78,7 @@ function addItemCategory(event) {
     addSelect(select, items[mainCategory][subCategory]);
     select.selectedIndex = select.options.length - 1;
     selectCategoryTree();
+    updateLocalStorage();
   }
 }
 
@@ -90,3 +101,37 @@ document
 document
   .querySelector("#sub-category")
   .addEventListener("change", selectCategoryTree);
+
+document.querySelector("form>button").addEventListener("click", () => {
+  document.forms[0].parentElement.close();
+});
+
+function updateMainMenu() {
+  const main = document.querySelector("#main");
+  main.replaceChildren();
+  Object.keys(items).forEach((key) => {
+    const li = document.createElement("li");
+    li.setAttribute("data-main", key);
+    li.append(key);
+    main.append(li);
+  });
+}
+
+function updateDropDownMenu(main) {
+  const dropDown = document.querySelector("#drop-down");
+  dropDown.replaceChildren();
+  Object.keys(items[main]).forEach((key) => {
+    const section = document.createElement("section");
+    const liSub = document.createElement("li");
+    liSub.append(key);
+    section.append(liSub);
+
+    items[main][key].forEach((item) => {
+      const liItem = document.createElement("li");
+      liItem.append(item);
+      section.append(liItem);
+    });
+
+    dropDown.append(section);
+  });
+}

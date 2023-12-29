@@ -121,7 +121,7 @@ function updateDropDownMenu(main) {
   const dropDown = document.querySelector("#drop-down");
   dropDown.replaceChildren();
   Object.keys(items[main]).forEach((key) => {
-    const section = document.createElement("section");
+    const section = document.createElement("menu");
     const liSub = document.createElement("li");
     liSub.append(key);
     section.append(liSub);
@@ -135,3 +135,22 @@ function updateDropDownMenu(main) {
     dropDown.append(section);
   });
 }
+
+function showDropDown(event) {
+  const dropDown = document.querySelector("#drop-down");
+  const menu = event.target;
+  if (menu.tagName === "LI") {
+    dropDown.classList.add("visible");
+    updateDropDownMenu(menu.textContent);
+  }
+}
+
+document.querySelector("#main").addEventListener("mouseover", showDropDown);
+document
+  .querySelector("nav")
+  .addEventListener("mouseleave", () =>
+    document.querySelector("#drop-down").classList.remove("visible")
+  );
+
+updateMainMenu();
+selectCategoryTree();

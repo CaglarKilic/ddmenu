@@ -1,0 +1,66 @@
+:root {
+  color: white;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+header {
+  background-color: #323c41;
+  height: 13svh;
+}
+
+.navbar {
+  background-color: #464f54;
+}
+
+nav {
+  margin: 0 15vw;
+}
+
+menu#main {
+  background-color: #464f54;
+  display: flex;
+  flex-basis: 11rem;
+
+  li:hover {
+    background-color: white;
+    color: black;
+    transition-duration: 0.5s;
+  }
+}
+
+menu#drop-down.visible {
+  visibility: visible;
+}
+
+menu#drop-down {
+  display: flex;
+  gap: 1rem;
+  color: black;
+  position: absolute;
+  width: calc(100% - 30vw);
+  left: 15vw;
+  box-shadow: 0 0.6rem 1rem -0.1rem hsla(0, 0%, 60%, 0.5);
+  visibility: hidden;
+
+  li {
+    padding: 0.5rem;
+  }
+
+  li:hover {
+    text-decoration: underline;
+  }
+
+  li:nth-child(1) {
+    font-weight: bold;
+  }
+}
